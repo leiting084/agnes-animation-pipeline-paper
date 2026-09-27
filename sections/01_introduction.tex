@@ -1,0 +1,69 @@
+\section{Introduction}
+
+\subsection{Motivation}
+
+Producing a character-consistent animated episode with generative models
+requires sustaining visual identity across dozens of shots, each one
+regenerated from scratch by text-to-image and text-to-video models. In our
+production of \nts, the observed one-pass acceptance rate was
+\textbf{12 of 52 shots}
+(\textbf{23\%}). The remaining 40 shots required re-generation, and a
+non-trivial fraction were rejected more than once.
+
+This figure is, to the best of our knowledge, \emph{not} unusual. It is,
+however, almost never reported. Production teams treat per-shot failure as an
+operational cost and have no incentive to publish its distribution. The
+result is a field operating without a shared quantitative account of
+\emph{what actually breaks}.
+
+\subsection{Contributions}
+
+We contribute a system description, an empirical failure taxonomy, and one
+technique-level finding, packaged as a single industrial-grade case study.
+
+\begin{itemize}
+  \item \textbf{C1 -- System.}
+        We describe \agnes, a shooting-stage pipeline that composes
+        \comfy\ graph execution, a locked style specification
+        (\styledef), and face-embedding-based character anchoring, and
+        the standards that make its outputs reproducible across operators.
+
+  \item \textbf{C2 -- Failure Analysis at episode scale.}
+        We release the audit records of \nts: \textbf{52 shot-level
+        inspection records} covering six scenes and 18 fields each, of
+        which 40 were rejected. We provide the first public distribution
+        of rejection reasons in an AIGC animation pipeline, together with
+        a taxonomy derived from them.
+
+  \item \textbf{C3 -- Negative-prompt efficacy.}
+        We quantify a counter-intuitive behaviour: constraint expressed
+        as a \emph{negative} prompt is systematically \emph{less} likely
+        to suppress the artefact it targets than the same constraint
+        expressed positively. We report this as an ablation with a
+        single manipulated variable.
+\end{itemize}
+
+\subsection{Why the failure distribution matters}
+
+Two consequences follow directly from a 23\% one-pass rate. First, per-shot
+pricing models systematically overstate deliverable output. Second, automatic
+quality control cannot be designed from the success cases alone: using a
+motion metric as an automatic reject rule, we observe that
+\textbf{36 of 52} records are classified as \emph{motion-anomalous} — a
+classification with no discriminative power. The dominant defects lie
+elsewhere, and identifying them is the substance of \Cref{sec:failure}.
+
+\subsection{Paper structure}
+
+\Cref{sec:related} reviews prior work; \Cref{sec:system} describes the
+pipeline; \Cref{sec:failure} presents the failure taxonomy;
+\Cref{sec:ablation} reports the negative-prompt ablation;
+\Cref{sec:discussion} discusses implications; \Cref{sec:conclusion}
+concludes.
+
+% TODO(写作顺序建议)
+%   1. 先写本节 Motivation 段（已含 23% 这个数字，是全篇最有力的一句）
+%   2. 再写 03_system（素材最全，写起来最顺）
+%   3. 再写 04_failure（数据已实跑，见下方 FIXME）
+%   4. 05_ablation 必须等实验跑完才能写完整
+%   5. 02_related_work 最后写（它决定 C3 是否还成立）

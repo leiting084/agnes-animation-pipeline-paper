@@ -1,0 +1,59 @@
+% ============================================================
+%  论文主文档 —— Springer / MTAP 版（当前主攻目标）
+%  编译： make mtap
+%  目标：Multimedia Tools and Applications, Track 10
+%        (generative AI in multimedia production pipelines)
+%  注意：期刊版章节顺序自由，但需补 Related Work 的横向对比表。
+% ============================================================
+\documentclass[runningheads]{llncs}
+
+\input{preamble}
+
+\begin{document}
+
+\title{An Industrial-Grade Generative Pipeline for Character-Consistent
+       Animated Series: System Design, Failure Taxonomy, and
+       Negative-Prompt Efficacy}
+
+% ---------- 作者 / 单位（Springer 格式，真实值见本地 affiliation.tex） ----------
+\author{\theauthor\inst{1}\orcidorcid{0000-0000-0000-0000}}
+\institute{\theaffil}
+\email{\theemail}
+
+\maketitle
+
+\begin{abstract}
+% TODO: 150-200 词，结构块化（ significance / contributions / results ）
+\end{abstract}
+
+\begin{keywords}
+Generative AI, animation production pipeline, character consistency,
+failure analysis, negative prompt, quality control
+\end{keywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_system}
+\input{sections/04_failure_analysis}
+\input{sections/05_ablation}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+
+% ---------- MTAP 要求：材料可用性声明 ----------
+\section{Declarations}
+\begin{itemize}
+  \item[--] \textbf{Funding}         % TODO  funding 或 "No funding received"
+  \item[--] \textbf{Competing interests}
+  \item[--] \textbf{Data and code availability}
+        % 指向 github 仓库。未发表前只给 data/ code/ 路径，不给分析结论。
+  \item[--] \textbf{Acknowledgments}
+\end{itemize}
+
+\bibliographystyle{splncs04}
+\bibliography{bib/references}
+
+\appendix
+\section{Appendix A · Reproduction Details}
+% 工作流 JSON 结构、审核指标定义、消融实验超参
+
+\end{document}

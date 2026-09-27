@@ -1,0 +1,50 @@
+% ============================================================
+%  共用宏包与命令 —— 两个 main.tex 都 \input 这个文件
+%  作者单位：真实值放在本地 affiliation.tex（已被 .gitignore 拦截）。
+%    · 有该文件  → 用真实单位（本机编译）
+%    · 无该文件  → 用下面占位值（公开仓库 / 别人 clone 后编译）
+% ============================================================
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}       % 三线表
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,xcolor,colortbl}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+% ---------- 自定义命令（全篇统一，不要在章节里另写） ----------
+\newcommand{\agnes}{\textsc{Agnes}}
+\newcommand{\comfy}{\textsc{ComfyUI}}
+\newcommand{\styledef}{STYLE\_LOCK}
+\newcommand{\insight}{InsightFace}
+\newcommand{\vds}{VDS}
+
+\newcommand{\nts}{\textbf{S1E01}}
+
+% 行内代码统一风格
+\newcommand{\code}[1]{\texttt{#1}}
+
+% 场景代号强调（论文里会反复出现场景号，别写漏下标）
+\newcommand{\shot}{\textsc{Shot}}
+
+% ---------- 图表默认参数 ----------
+\graphicspath{{figures/}}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{6}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+
+% ---------- 作者 / 单位 ----------
+% 真实单位只在本地 affiliation.tex。该文件被 .gitignore 拦截，不会进公开仓库。
+% 顺序不能颠倒：先读真值，再用 \providecommand 补占位（已定义的不覆盖）。
+\IfFileExists{affiliation.tex}{\input{affiliation.tex}}{}
+\providecommand{\theauthor}{[Author name withheld until submission]}
+\providecommand{\theaffil}{[Affiliation withheld until submission]}
+\providecommand{\theemail}{[email]}
+
+% ---------- 语言与排版 ----------
+\hyphenation{ComfyUI InsightFace negative-prompt}

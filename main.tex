@@ -1,0 +1,39 @@
+% ============================================================
+%  论文主文档 —— IEEEtran 版（投会议用，当前 ICME 备选）
+%  编译： make icme
+%  注意：IEEEtran 分页严格，图表尺寸受限。
+%        章节顺序不可自行调整（IEEE 有固定 section ordering）。
+% ============================================================
+\documentclass[conference]{IEEEtran}
+
+\input{preamble}
+
+% ---------- 作者 / 单位（IEEE 格式，真实值见本地 affiliation.tex） ----------
+\author{\normalsize \theauthor\\
+  \textit{\theaffil}\\
+  \normalsize \theemail}
+\date{}   % IEEE 不显示日期
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+% TODO: 150 词以内。三句话结构：
+%   1) 角色一致性动画生产目前靠人工返工，缺少公开的失败分布；
+%   2) 我们公开了一集动画的完整生产流水线与 52 条镜头审核记录；
+%   3) 并给出失效模式统计与负向提示词有效性的量化证据。
+\end{abstract}
+
+% ---------- IEEE 固定顺序：I. 引言, II. 相关工作, III. 方法, IV. 实验, V. 结论 ----------
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_system}
+\input{sections/04_failure_analysis}
+\input{sections/05_ablation}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{bib/references}
+
+\end{document}
