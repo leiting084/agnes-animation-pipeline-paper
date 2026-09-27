@@ -9,8 +9,8 @@ S01E01 的 AI 动画生产流水线，附 52 个镜头的审核记录。
 ├── main_mtap.tex           # 论文源码 · llncs 版
 ├── preamble.tex            # 宏包与全篇统一命令
 ├── affiliation.tex         # 🔒 本地真实单位，被 .gitignore 拦截，不在仓库里
-├── sections/               # 章节，一章一文件
-├── figures/  bib/
+├── sections/               # 章节，一章一文件（02–07 为编译占位，待写）
+├── figures/  bib/          # make 时自动创建，bib/references.bib 为空库占位
 ├── data/                   # 原始数据
 │   └── audit_records_s01e01.json
 └── code/
